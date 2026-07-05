@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #0f172a;
+    background:
+      radial-gradient(circle at 8% 6%, rgba(34, 211, 238, 0.16), transparent 28%),
+      radial-gradient(circle at 92% 12%, rgba(251, 146, 60, 0.14), transparent 26%),
+      linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+
+  p {
+    font-weight: 400;
+  }
+}
+
+.shop-surface {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(45, 212, 191, 0.16), transparent 28%),
+    radial-gradient(circle at 86% 28%, rgba(129, 140, 248, 0.16), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, #f8fafc 48%, #eef2ff 100%);
+}
+
+.responsive-title {
+  font-size: clamp(2.35rem, 9vw, 4.75rem);
+  line-height: 0.98;
+}
+
+.responsive-section {
+  width: min(100% - 2rem, 80rem);
+  margin-inline: auto;
+}
+
+.gradient-button {
+  background-image: linear-gradient(135deg, #0f172a 0%, #155e75 52%, #0891b2 100%);
+  box-shadow: 0 14px 34px rgba(8, 145, 178, 0.2);
+}
+
+.gradient-button:hover {
+  background-image: linear-gradient(135deg, #164e63 0%, #0891b2 52%, #f97316 100%);
+}
+
+.gradient-card {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(34, 211, 238, 0.42), rgba(249, 115, 22, 0.34)) border-box;
+  border: 1px solid transparent;
+}
+
+.gradient-banner {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(255, 255, 255, 0.22), transparent 26%),
+    linear-gradient(120deg, #0f172a 0%, #155e75 48%, #f97316 100%);
+}
+
+.gradient-footer {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(34, 211, 238, 0.22), transparent 30%),
+    radial-gradient(circle at 86% 12%, rgba(249, 115, 22, 0.18), transparent 28%),
+    linear-gradient(135deg, #020617 0%, #0f172a 55%, #164e63 100%);
+}
+
+.product-carousel-scroll {
+  scroll-padding-inline: 1rem;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+/* Custom Animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-slideIn {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.marquee-track {
+  animation: marqueeScroll 22s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* Scrollbar styling for sidebar */
+.sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Scrollbar styling for modal content */
+.modal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Scrollbar styling for tables and overflow content */
+.table-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.table-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* General scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Firefox scrollbar styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Ensure proper scroll on body and html */
+html, body {
+  overflow-x: hidden;
+}
+
+#root {
+  min-width: 0;
+  overflow-x: clip;
+}
+
+@media (max-width: 640px) {
+  .responsive-section {
+    width: min(100% - 1.5rem, 80rem);
+  }
+
+  .product-carousel-scroll {
+    scroll-padding-inline: 0;
+  }
+}
+
+button,
+a,
+[role="button"] {
+  transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+  transition-duration: 180ms;
+  transition-timing-function: ease;
+}
+
+button:hover,
+a:hover,
+[role="button"]:hover {
+  transform: translateY(-1px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.35);
+  outline-offset: 2px;
+}
+
+.shadow-card:hover,
+.shadow-card-hover:hover,
+tr:hover {
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Main content area scroll */
+.main-content-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.main-content-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.main-content-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}

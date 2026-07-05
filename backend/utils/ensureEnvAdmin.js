@@ -25,15 +25,9 @@ const ensureEnvAdmin = async () => {
     changed = true;
   }
 
-  const passwordMatches = await user.comparePassword(password);
-  if (!passwordMatches) {
-    user.password = password;
-    changed = true;
-  }
-
   if (changed) {
     await user.save();
-    console.log(`Admin user synced from ADMIN_EMAIL: ${email}`);
+    console.log(`Admin user role synced from ADMIN_EMAIL: ${email}`);
   }
 };
 

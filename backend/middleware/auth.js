@@ -27,6 +27,16 @@ const authenticate = async (req, res, next) => {
     }
 
     req.user = user;
+    if (
+      user.forcePasswordReset &&
+      !['/api/auth/change-password', '/auth/change-password', '/api/auth/me', '/auth/me'].includes(req.originalUrl)
+    ) {
+      return res.status(403).json({
+        success: false,
+        message: 'Password reset required before continuing.',
+        forcePasswordReset: true
+      });
+    }
     next();
   } catch (error) {
     return res.status(401).json({ success: false, message: 'Token is not valid' });

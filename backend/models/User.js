@@ -56,10 +56,54 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  forcePasswordReset: {
+    type: Boolean,
+    default: false
+  },
   passwordResetToken: {
     type: String
   },
   passwordResetExpires: {
+    type: Date
+  },
+  passwordResetRequestedAt: {
+    type: Date
+  },
+  adminOtpHash: {
+    type: String
+  },
+  adminOtpExpires: {
+    type: Date
+  },
+  adminOtpUsedAt: {
+    type: Date
+  },
+  adminOtpRequestedAt: {
+    type: Date
+  },
+  backupRecoveryCodes: [{
+    codeHash: String,
+    usedAt: Date
+  }],
+  recoveryRequests: [{
+    type: {
+      type: String,
+      enum: ['password_reset', 'admin_otp']
+    },
+    ipAddress: String,
+    requestedAt: {
+      type: Date,
+      default: Date.now
+    }
+  }],
+  failedLoginHistory: [{
+    ipAddress: String,
+    attemptedAt: {
+      type: Date,
+      default: Date.now
+    }
+  }],
+  lastPasswordChangedAt: {
     type: Date
   }
 }, { timestamps: true });
